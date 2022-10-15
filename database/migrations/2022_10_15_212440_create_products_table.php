@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\CarMake;
-use App\Models\CarModel;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,13 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cars', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(CarMake::class)->nullable()->constrained();
-            $table->foreignIdFor(CarModel::class)->nullable()->constrained();
-            $table->string('name');
-            $table->float('price')->nullable();
-            $table->year('year_of_manufacture')->nullable();
+            $table->nullableMorphs('productable');
+            $table->string('name')->unique();
+            $table->float('approximate_unit_price')->nullable();
+            $table->unsignedBigInteger('quantity')->default(0);
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cars');
+        Schema::dropIfExists('products');
     }
 };

@@ -1,7 +1,6 @@
 <?php
 
-use App\Models\CarMake;
-use App\Models\CarModel;
+use App\Models\Car;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -15,13 +14,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cars', function (Blueprint $table) {
+        Schema::create('car_parts', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(CarMake::class)->nullable()->constrained();
-            $table->foreignIdFor(CarModel::class)->nullable()->constrained();
+            $table->foreignIdFor(Car::class)->nullable()->constrained()->cascadeOnDelete();
             $table->string('name');
             $table->float('price')->nullable();
-            $table->year('year_of_manufacture')->nullable();
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cars');
+        Schema::dropIfExists('car_parts');
     }
 };
