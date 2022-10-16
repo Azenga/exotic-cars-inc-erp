@@ -15,20 +15,82 @@ class CarSeeder extends Seeder
      */
     public function run()
     {
-        $data = [
-            'Nissan Altima',
-            'Mazda CX-5',
-            'Honda CR-V',
-            'Toyota RAV4',
-            'Toyota Highlander',
-            'Subaru Forrester',
-            'Kia Sorento',
-            'Toyota Camry',
-            'Honda Accord',
-            'Subaru Outback',
-            'Subaru Crosstrek'
+        $data  = [
+            [
+                'name' => 'Nissan Altima',
+                'year_of_manufacture' => now()->subYears(random_int(10, 50))->year,
+                'approximate_unit_price' => random_int(1000, 20000),
+                'quantity' => random_int(10, 100)
+            ],
+            [
+                'name' => 'Mazda CX-5',
+                'year_of_manufacture' => now()->subYears(random_int(10, 50))->year,
+                'approximate_unit_price' => random_int(1000, 20000),
+                'quantity' => random_int(10, 100)
+            ],
+            [
+                'name' => 'Honda CR-V',
+                'year_of_manufacture' => now()->subYears(random_int(10, 50))->year,
+                'approximate_unit_price' => random_int(1000, 20000),
+                'quantity' => random_int(10, 100)
+            ],
+            [
+                'name' => 'Toyota RAV4',
+                'year_of_manufacture' => now()->subYears(random_int(10, 50))->year,
+                'approximate_unit_price' => random_int(1000, 20000),
+                'quantity' => random_int(10, 100)
+            ],
+            [
+                'name' => 'Toyota Highlander',
+                'year_of_manufacture' => now()->subYears(random_int(10, 50))->year,
+                'approximate_unit_price' => random_int(1000, 20000),
+                'quantity' => random_int(10, 100)
+            ],
+            [
+                'name' => 'Subaru Forrester',
+                'year_of_manufacture' => now()->subYears(random_int(10, 50))->year,
+                'approximate_unit_price' => random_int(1000, 20000),
+                'quantity' => random_int(10, 100)
+            ],
+            [
+                'name' => 'Kia Sorento',
+                'year_of_manufacture' => now()->subYears(random_int(10, 50))->year,
+                'approximate_unit_price' => random_int(1000, 20000),
+                'quantity' => random_int(10, 100)
+            ],
+            [
+                'name' => 'Toyota Camry',
+                'year_of_manufacture' => now()->subYears(random_int(10, 50))->year,
+                'approximate_unit_price' => random_int(1000, 20000),
+                'quantity' => random_int(10, 100)
+            ],
+            [
+                'name' => 'Honda Accord',
+                'year_of_manufacture' => now()->subYears(random_int(10, 50))->year,
+                'approximate_unit_price' => random_int(1000, 20000),
+                'quantity' => random_int(10, 100)
+            ],
+            [
+                'name' => 'Subaru Outback',
+                'year_of_manufacture' => now()->subYears(random_int(10, 50))->year,
+                'approximate_unit_price' => random_int(1000, 20000),
+                'quantity' => random_int(10, 100)
+            ],
+            [
+                'name' => 'Subaru Crosstrek',
+                'year_of_manufacture' => now()->subYears(random_int(10, 50))->year,
+                'approximate_unit_price' => random_int(1000, 20000),
+                'quantity' => random_int(10, 100)
+            ],
         ];
 
-        array_walk($data, fn($name) => Car::create(compact('name')));
+        array_walk($data, fn($payload) => Car::create([
+            'name' => $payload['name'],
+            'year_of_manufacture' => $payload['year_of_manufacture'],
+        ])->product()->create([
+            'name' => $payload['name'],
+            'approximate_unit_price' => $payload['approximate_unit_price'],
+            'quantity' => $payload['quantity'],
+        ]));
     }
 }
