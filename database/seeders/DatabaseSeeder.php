@@ -18,7 +18,9 @@ class DatabaseSeeder extends Seeder
             CarMakeSeeder::class,
             CarModelSeeder::class,
             CarSeeder::class,
-            ServiceSeeder::class
+            ServiceSeeder::class,
+            LocationSeeder::class,
+            AreaSeeder::class,
         ]);
     }
 }
