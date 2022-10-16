@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             CarSeeder::class,
             ServiceSeeder::class,
             LocationSeeder::class,
+            AreaSeeder::class,
         ]);
     }
 }
