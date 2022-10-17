@@ -18,4 +18,14 @@ class Customer extends Model
         'since_date' => 'date'
     ];
 
+    /**
+     * Customer - Sales relationship definition
+     * 
+     * @return Builder
+     */
+    public function sales()
+    {
+        return $this->morphMany(Sale::class, 'dealable');
+    }
+
 }

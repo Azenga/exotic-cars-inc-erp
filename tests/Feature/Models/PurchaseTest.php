@@ -18,6 +18,7 @@ class PurchaseTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
+    /** @group purchase */
     public function testPurchaseCreateMethod()
     {
         // Create the purchasable

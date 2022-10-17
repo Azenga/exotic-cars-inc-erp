@@ -43,12 +43,22 @@ class User extends Authenticatable
     ];
 
     /**
-     * Employee - User relationship definition
+     * User - Employee relationship definition
      * 
-     * @return Employee
+     * @return Builder
      */
     public function employee()
     {
         return $this->hasOne(Employee::class);
+    }
+
+    /**
+     * User - Customer relationship definition
+     * 
+     * @return Builder
+     */
+    public function customer()
+    {
+        return $this->hasOne(Customer::class);
     }
 }

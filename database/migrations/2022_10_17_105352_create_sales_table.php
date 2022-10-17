@@ -2,9 +2,9 @@
 
 use App\Models\Car;
 use App\Models\Employee;
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -15,16 +15,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('purchases', function (Blueprint $table) {
+        Schema::create('sales', function (Blueprint $table) {
             $table->id();
-            $table->morphs('purchasable');
+            $table->morphs('salable');
             $table->foreignIdFor(Employee::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Car::class)->nullable()->constrained()->cascadeOnDelete();
             $table->integer('quantity')->default(1);
             $table->float('amount');
             $table->nullableMorphs('dealable');
             $table->string('type')->nullable();
-
             $table->timestamps();
         });
     }
@@ -36,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('purchases');
+        Schema::dropIfExists('sales');
     }
 };
