@@ -13,6 +13,7 @@ class Purchase extends Model
         'purchasable_id',
         'purchasable_type',
         'employee_id',
+        'car_id',
         'quantity',
         'amount',
         'dealable_id',
