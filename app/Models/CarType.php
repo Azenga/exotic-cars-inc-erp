@@ -19,4 +19,14 @@ class CarType extends Model
     protected $casts = [
         'price' => 'float'
     ];
+
+    public function carMake()
+    {
+        return $this->belongsTo(CarMake::class);
+    }
+
+    public function carModel()
+    {
+        return $this->belongsTo(CarModel::class);
+    }
 }
