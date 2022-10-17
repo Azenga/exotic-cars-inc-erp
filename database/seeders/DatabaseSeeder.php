@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             ServiceSeeder::class,
             LocationSeeder::class,
             AreaSeeder::class,
+            CompanySeeder::class,
         ]);
     }
 }
