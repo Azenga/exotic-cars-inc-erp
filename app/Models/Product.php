@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, CanBePurchased;
 
     protected $fillable = [
         'name',
@@ -30,4 +30,5 @@ class Product extends Model
     {
         return $this->morphTo();
     }
+
 }
