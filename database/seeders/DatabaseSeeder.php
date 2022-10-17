@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             LocationSeeder::class,
             AreaSeeder::class,
             CompanySeeder::class,
+            CarSeeder::class
         ]);
     }
 }
