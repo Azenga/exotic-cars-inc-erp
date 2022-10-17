@@ -3,7 +3,6 @@
 namespace Tests\Feature\Models;
 
 use App\Models\Car;
-use App\Models\CarPart;
 use App\Models\CarType;
 use App\Models\User;
 use Database\Seeders\CarTypeSeeder;
