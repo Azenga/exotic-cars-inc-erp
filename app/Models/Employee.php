@@ -13,4 +13,14 @@ class Employee extends Model
         'user_id',
         'title'
     ];
+
+    /**
+     * Employees - Jobs relationship definition
+     * 
+     * @return Builder
+     */
+    public function jobs()
+    {
+        return $this->belongsToMany(Job::class);
+    }
 }

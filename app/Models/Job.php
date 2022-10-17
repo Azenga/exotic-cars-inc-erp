@@ -13,4 +13,14 @@ class Job extends Model
         'title',
         'description'
     ];
+
+    /**
+     * Jobs - Employees relationship definition
+     * 
+     * @return Builder
+     */
+    public function employees()
+    {
+        return $this->belongsToMany(Employee::class);
+    }
 }
