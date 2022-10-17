@@ -2,8 +2,11 @@
 
 namespace App\Providers;
 
-use App\Models\Car;
 use App\Models\CarPart;
+use App\Models\CarType;
+use App\Models\Company;
+use App\Models\Customer;
+use App\Models\Employee;
 use App\Models\Product;
 use App\Models\Service;
 use App\Models\User;
@@ -31,10 +34,13 @@ class AppServiceProvider extends ServiceProvider
     {
         Relation::enforceMorphMap([
             'user' => User::class,
-            'car' => Car::class,
+            'car-type' => CarType::class,
             'car-part' => CarPart::class,
             'service' => Service::class,
-            'product' => Product::class
+            'product' => Product::class,
+            'customer' => Customer::class,
+            'company' => Company::class,
+            'employee' => Employee::class,
         ]);
     }
 }

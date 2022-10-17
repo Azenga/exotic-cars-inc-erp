@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Car;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\CarType;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class CarSeeder extends Seeder
+class CarTypeSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -84,7 +84,7 @@ class CarSeeder extends Seeder
             ],
         ];
 
-        array_walk($data, fn($payload) => Car::create([
+        array_walk($data, fn($payload) => CarType::create([
             'name' => $payload['name'],
             'year_of_manufacture' => $payload['year_of_manufacture'],
         ])->product()->create([

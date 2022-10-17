@@ -2,15 +2,15 @@
 
 namespace Tests\Feature\Models;
 
-use App\Models\Car;
 use App\Models\CarMake;
 use App\Models\CarModel;
+use App\Models\CarType;
 use Tests\TestCase;
 use App\Models\Product;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class CarTest extends TestCase
+class CarTypeTest extends TestCase
 {
     use RefreshDatabase, WithFaker;
 
@@ -22,11 +22,11 @@ class CarTest extends TestCase
             'year_of_manufacture' => $this->faker->year(),
         ];
 
-        $car = Car::create($payload);
+        $carType = CarType::create($payload);
 
-        $this->assertEquals($payload['name'], $car->name);
+        $this->assertEquals($payload['name'], $carType->name);
 
-        $this->assertEquals($payload['year_of_manufacture'], $car->year_of_manufacture);
+        $this->assertEquals($payload['year_of_manufacture'], $carType->year_of_manufacture);
         
     }
 
@@ -40,15 +40,15 @@ class CarTest extends TestCase
             'quantity' => $this->faker->numberBetween(5, 100)
         ];
 
-        /** @var Car */
-        $car = Car::create($payload);
+        /** @var CarType */
+        $carType = CarType::create($payload);
 
         /** @var Product */
-        $product = $car->product()->create($payload);
+        $product = $carType->product()->create($payload);
 
-        $this->assertEquals($payload['name'], $car->name);
+        $this->assertEquals($payload['name'], $carType->name);
 
-        $this->assertEquals($payload['year_of_manufacture'], $car->year_of_manufacture);
+        $this->assertEquals($payload['year_of_manufacture'], $carType->year_of_manufacture);
 
         $this->assertEquals($payload['approximate_unit_price'], $product->approximate_unit_price);
 
@@ -70,19 +70,19 @@ class CarTest extends TestCase
             'quantity' => $this->faker->numberBetween(5, 100)
         ];
 
-        /** @var Car */
-        $car = Car::create($payload);
+        /** @var CarType */
+        $carType = CarType::create($payload);
 
         /** @var Product */
-        $product = $car->product()->create($payload);
+        $product = $carType->product()->create($payload);
 
-        $this->assertEquals($payload['name'], $car->name);
+        $this->assertEquals($payload['name'], $carType->name);
 
-        $this->assertEquals($payload['car_make_id'], $car->car_make_id);
+        $this->assertEquals($payload['car_make_id'], $carType->car_make_id);
         
-        $this->assertEquals($payload['car_model_id'], $car->car_model_id);
+        $this->assertEquals($payload['car_model_id'], $carType->car_model_id);
 
-        $this->assertEquals($payload['year_of_manufacture'], $car->year_of_manufacture);
+        $this->assertEquals($payload['year_of_manufacture'], $carType->year_of_manufacture);
 
         $this->assertEquals($payload['approximate_unit_price'], $product->approximate_unit_price);
 

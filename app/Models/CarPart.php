@@ -11,10 +11,22 @@ class CarPart extends Model
 
     protected $fillable = [
         'name',
-        'car_id',
+        'car_type_id',
     ];
 
     protected $casts = [
         'price' => 'float'
     ];
+
+    /**
+     * CarPart - CarType relationship definition
+     * 
+     * Parts for specific car type
+     * 
+     * @return Builder
+     */
+    public function carType()
+    {
+        return $this->belongsTo(CarType::class);
+    }
 }
