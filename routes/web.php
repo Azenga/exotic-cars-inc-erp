@@ -1,46 +1,64 @@
 <?php
 
-use App\Services\CarService;
-use App\Services\CustomerService;
-use App\Services\EmployeeService;
-use App\Services\ProductService;
-use App\Services\ServiceService;
+use App\Models\Car;
+use App\Models\Customer;
+use App\Models\Employee;
+use App\Models\Product;
+use App\Models\Purchase;
+use App\Models\Sale;
+use App\Models\Service;
 use App\Services\UserService;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function (UserService $userService) {
-    $userService->get();
+
 });
 
-Route::get('/customers', function (CustomerService $customerService) {
-    $customerService->get();
+Route::get('/purchases', function (UserService $userService) {
+
+    $customers = collect(array_values(Customer::all('id')->pluck('id')->all()));
+
+    $products = collect(array_values(Product::all('id')->pluck('id')->all()));
+
+    $employees = collect(array_values(Employee::all('id')->pluck('id')->all()));
+
+
+    $purchase = Purchase::create([
+        ...Purchase::factory()->make()->toArray(),
+        'employee_id' => $employees->random(),
+        'purchasable_id' => $products->random(),
+        'purchasable_type' => 'product',
+        'dealable_id' => $customers->random(),
+        'dealable_type' => 'customer',
+        'quantity' => 1,
+    ]);
+
+    dd($purchase);
+
 });
 
-Route::get('/employees', function (EmployeeService $employeeService) {
-    $employeeService->get();
-});
+Route::get('/sales', function () {
 
-Route::get('/products', function (ProductService $productService) {
-    $productService->get();
-});
+    $customers = collect(array_values(Customer::all('id')->pluck('id')->all()));
 
-Route::get('/services', function (ServiceService $serviceService) {
-    $serviceService->get();
-});
+    $services = collect(array_values(Service::all('id')->pluck('id')->all()));
 
-Route::get('/cars', function (CarService $carService) {
-    $carService->get();
+    $employees = collect(array_values(Employee::all('id')->pluck('id')->all()));
 
-    return view('welcome');
+    $cars = collect(array_values(Car::all('id')->pluck('id')->all()));
+
+
+    $sale = Sale::create([
+        ...Sale::factory()->make()->toArray(),
+        'employee_id' => $employees->random(),
+        'car_id' => $cars->random(),
+        'salable_id' => $services->random(),
+        'salable_type' => 'service',
+        'dealable_id' => $customers->random(),
+        'dealable_type' => 'customer',
+        'quantity' => 1,
+    ]);
+
+    dd($sale);
+
 });

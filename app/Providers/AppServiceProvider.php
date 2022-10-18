@@ -38,6 +38,7 @@ class AppServiceProvider extends ServiceProvider
             'car-part' => CarPart::class,
             'service' => Service::class,
             'product' => Product::class,
+            'service' => Service::class,
             'customer' => Customer::class,
             'company' => Company::class,
             'employee' => Employee::class,
